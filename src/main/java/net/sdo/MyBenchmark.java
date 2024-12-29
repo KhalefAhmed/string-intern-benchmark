@@ -42,6 +42,7 @@ public class MyBenchmark {
     @Setup(Level.Iteration)
     public void setUp() {
         map = new ConcurrentHashMap<>();
+        strings = new String[nStrings];
         for (int i = 0; i < nStrings; i++) {
             strings[i] = "String to intern " + i;
         }
