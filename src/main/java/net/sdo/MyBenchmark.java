@@ -25,6 +25,7 @@
 
 package net.sdo;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 
@@ -44,7 +45,7 @@ public class MyBenchmark {
         map = new ConcurrentHashMap<>();
         strings = new String[nStrings];
         for (int i = 0; i < nStrings; i++) {
-            strings[i] = "String to intern " + i;
+            strings[i] = makeRandomString();
         }
     }
 
@@ -64,5 +65,8 @@ public class MyBenchmark {
         }
     }
 
+    private String makeRandomString() {
+        return RandomStringUtils.randomAscii(5, 256);
+    }
 
 }
